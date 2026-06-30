@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Microsoft Fabric</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="startScreen" class="start-wrap">
+    <div class="container start-card">
+      <img src="logo.webp" alt="Logo" class="logo">
+      <!-- <div class="pill"><span id="availableCount">0 preguntas disponibles</span></div> -->
+      <h1 class="title" id="quizTitle">Examen de Práctica, DP-700</h1>
+      <div class="subtitle" id="quizSubtitle">Microsoft Fabric Data Engineer</div>
+      <div class="tagline" id="quizTagline">Practica varias veces antes de presentarte al examen real</div>
+      <div class="author" id="quizAuthor">Proyecto editable</div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-icon">🧠</div>
+          <div class="stat-num" id="statQuestions">0</div>
+          <div class="stat-label">Preguntas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-num" id="statAvailable">0 de 0</div>
+          <div class="stat-label">Disponibles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏷️</div>
+          <div class="stat-num" id="statCategories">0</div>
+          <div class="stat-label">Categorías</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⏱️</div>
+          <div class="stat-num" id="statTimeMode">60'</div>
+          <div class="stat-label">Tiempo</div>
+        </div>
+      </div>
+
+      <button id="startQuiz" class="start-btn">⚡ Comenzar Quiz</button>
+      <div class="start-note" id="quizNote">💡 Una vez hayas obtenido unas 5 veces sobre 80%, preséntate al examen.</div>
+    </div>
+  </section>
+
+  <main id="quizScreen" class="container hidden">
+    <div class="topline">
+      <div id="counter">1/1</div>
+      <div class="inline-badges">
+        <span class="badge" id="answeredBadge">0 respondidas</span>
+        <span class="badge" id="correctBadge">0 correctas</span>
+        <span class="badge" id="timerBadge">00:00</span>
+      </div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+
+    <div class="meta">
+      <span class="cat" id="categoryTag">Microsoft Fabric</span>
+      <span class="mode" id="modeTag">Una respuesta correcta</span>
+    </div>
+
+    <div class="q-card" id="questionCard">
+      <h2 class="q-title" id="questionText"></h2>
+      <div class="q-en" id="questionTextEn"></div>
+    </div>
+
+    <div class="options" id="optionsWrap"></div>
+
+    <div class="actions">
+      <button class="btn primary" id="confirmBtn">Confirmar respuesta</button>
+      <!-- <button class="btn primary hidden" id="nextBtn">Siguiente</button> -->
+    </div>
+
+    <div id="resultBox" class="result"></div>
+
+    <div class="bottom-nav">
+      <button class="btn" id="prevBtn">← Anterior</button>
+      <button class="btn primary" id="nextBtn">Siguiente →</button>
+    </div>
+  </main>
+
+  <!-- <section id="summaryScreen" class="container hidden">
+    <div class="summary-card">
+      <h2 class="summary-title">Resultado final</h2>
+      <div class="summary-subtitle">Terminaste el cuestionario completo.</div>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-value" id="sumTotal">0</div>
+          <div class="summary-label">Preguntas</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" id="sumAnswered">0</div>
+          <div class="summary-label">Respondidas</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" id="sumCorrect">0</div>
+          <div class="summary-label">Correctas</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" id="sumScore">0/0</div>
+          <div class="summary-label">Puntuación</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" id="sumPercent">0%</div>
+          <div class="summary-label">Porcentaje</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-value" id="sumTime">00:00</div>
+          <div class="summary-label">Tiempo</div>
+        </div>
+</div>
+      <div class="summary-actions">
+        <button class="btn primary" id="restartQuiz">Volver a empezar</button>
+      </div>
+    </div>
+  </section> -->
+
+
+  <section id="summaryScreen" class="container hidden">
+
+  <div class="summary-modern">
+
+    <div class="score-circle">
+      <div id="sumPercent">0%</div>
+      <small id="sumScore">0/0</small>
+    </div>
+
+    <div id="sumEmoji" class="summary-emoji">💪</div>
+
+    <h2 id="sumMessage" class="summary-message">
+      A seguir practicando
+    </h2>
+
+    <p id="sumSubMessage" class="summary-submessage">
+      No te rindas, la práctica hace al maestro.
+    </p>
+
+    <div class="summary-cards">
+
+      <div class="summary-stat">
+        <div class="summary-icon success">◎</div>
+        <div id="sumCorrectPoints" class="summary-number">0</div>
+        <div class="summary-label">Correctas</div>
+      </div>
+
+      <div class="summary-stat">
+        <div class="summary-icon danger">↗</div>
+        <div id="sumWrongPoints" class="summary-number">0</div>
+        <div class="summary-label">Incorrectas</div>
+      </div>
+
+      <div class="summary-stat">
+        <div class="summary-icon warning">☆</div>
+        <div id="sumStatus" class="summary-number">X</div>
+        <div id="sumStatusText" class="summary-label">Reprobado</div>
+      </div>
+
+    </div>
+
+    <a
+      id="learnBtn"
+      class="summary-btn"
+      href="https://learn.microsoft.com/es-es/training/courses/az-900t00"
+      target="_blank"
+    >
+      📖 Estudiar en Microsoft Learn
+    </a>
+
+    <button id="pdfBtn" class="summary-btn">
+      📄 Descargar Informe PDF
+    </button>
+
+    <button id="restartQuiz" class="summary-link">
+      ↻ Intentar de nuevo
+    </button>
+
+  </div>
+
+</section>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
+

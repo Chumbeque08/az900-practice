@@ -55,7 +55,7 @@ function applyConfig() {
   document.getElementById('quizAuthor').textContent = CONFIG.author;
   document.getElementById('quizNote').textContent = CONFIG.note;
 
-  const categories = new Set(questions.map(q => q.category || "Microsoft Fabric"));
+  const categories = new Set(questions.map(q => q.category || "Microsoft Azure Fundamentals"));
   // document.getElementById('availableCount').textContent = `${questions.length} preguntas disponibles`;
   document.getElementById('statQuestions').textContent = questions.length;
   document.getElementById('statAvailable').textContent = `${questions.length} de ${QUESTIONS.length}`;
@@ -271,7 +271,7 @@ function renderQuestion() {
 
   questionCard.style.display = "block";
 
-  categoryTag.textContent = q.category || "Microsoft Fabric";
+  categoryTag.textContent = q.category || "Microsoft Azure Fundamentals";
 
   modeTag.textContent = q.type === "multiple"
     ? "Varias respuestas correctas"
@@ -345,7 +345,7 @@ function renderQuestion() {
         rendered = rendered.replace(`___${blank.id}___`, selectHtml);
       });
 
-      return `<div class="code-line">${rendered}</div>`;
+      return `<div class="code-line inline-dropdown-line">${rendered}</div>`;
     }).join("");
 
     optionsWrap.innerHTML = `

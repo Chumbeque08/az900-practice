@@ -1,4 +1,4 @@
-# Proyecto editable, Quiz Microsoft Fabric
+# Proyecto editable, Quiz Microsoft Azure Fundamentals
 
 ## Archivos
 - `index.html`, estructura principal

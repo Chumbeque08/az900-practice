@@ -200,7 +200,7 @@ IaaS es el modelo adecuado para Azure Virtual Machines. Permite aprovisionar y a
     "Shared"
   ],
 
-  correct: [1],
+  correct: [0],
 
   explanation_es: `
 Basic ofrece únicamente 10 GB de almacenamiento total, insuficiente para 10 aplicaciones que requieren 10 GB cada una. Standard proporciona más capacidad y cumple todos los requisitos.
